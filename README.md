@@ -17,7 +17,8 @@ To speed up cross-modal alignment, we use the structural information from MSMD X
 1.  **Phase 1 (Graph-Audio pretraining):** A Graph Attention Network (GAT) and a Spectrogram Swin Transformer are trained with a contrastive objective to align graph structure with audio representations
 2.  **Phase 2 (Graph-Vision distillation):** An Image Swin Transformer is trained to match the frozen GAT embeddings using a cosine similarity loss, transferring structural information from the graph into the vision model
 3.  **Phase 3 (Audio-Vision training):** The audio and vision Swin Transformers are jointly fine-tuned to better align their representations
-4.  
+
+
 ### Contrastive Setup (MoCo)
 Cross-modal alignment in Phases 1 and 3 uses Momentum Contrast to maintain a large number of negative samples.
 * **Queue Size (K):** 16384
@@ -25,7 +26,7 @@ Cross-modal alignment in Phases 1 and 3 uses Momentum Contrast to maintain a lar
 * **Temperature (τ):** 0.07
 
 ---
-**References**
+**References**  
 [1] Matthias Dorfer, Jan Hajič jr., Andreas Arzt, Harald Frostel, Gerhard Widmer. *Learning Audio-Sheet Music Correspondences for Cross-Modal Retrieval and Piece Identification.* Transactions of the International Society for Music Information Retrieval, issue 1, 2018.
 
 
