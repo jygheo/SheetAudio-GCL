@@ -26,19 +26,19 @@ Edges represent temporal relationships between notes:
 
 Training is performed in three stages to  align graph, audio, and vision representations.
 
-#### Stage 1: Audio–Graph Pretraining
+#### Stage 1: Audio-Graph Pretraining
 
 <img width="576" height="300" alt="Sheet_Audio_GCL_imgs_page-0001" src="https://github.com/user-attachments/assets/55040af5-07f0-47d8-b3cf-9d5f362737c1" />  
 
 We use symmetric Momentum Contrast (MoCo) to align audio spectrogram embeddings with their corresponding graph embeddings produced by the Graph Attention Network (GAT).
 
-#### Stage 2: Vision–Graph Pretraining
+#### Stage 2: Vision-Graph Pretraining
 
 <img width="380" height="300" alt="Sheet_Audio_GCL_imgs_page-0002" src="https://github.com/user-attachments/assets/ad807c54-e944-47db-8768-c0635405b3bf" />  
 
 With the GAT frozen, we train the vision encoder to match the corresponding GAT embeddings from sheet music images.
 
-#### Stage 3: Vision–Audio Fine-Tuning
+#### Stage 3: Vision-Audio Fine-Tuning
 
 <img width="583" height="300" alt="Sheet_Audio_GCL_imgs_page-0003" src="https://github.com/user-attachments/assets/4408d955-60c2-4cdc-a126-8052d0f8ac5a" />  
 
@@ -47,6 +47,6 @@ The pretrained vision and audio encoders are jointly fine-tuned using symmetric 
 ## Results 
 
 Retrieval performance is evaluated on the MSMD test split using Rank@1, Rank@25, Mean Reciprocal Rank (MRR), and Median Rank (MR) after 1 epoch of direct Vision-Audio fine-tuning.
+MSMD one epoch
 * **Audio-to-Vision:** R@1: 0.670 | R@25: 0.925 | MRR: 0.756 | MR: 1.0
 * **Vision-to-Audio:** R@1: 0.733 | R@25: 0.895 | MRR: 0.779 | MR: 1.0
-
