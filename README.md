@@ -66,6 +66,7 @@ Evaluation was conducted on the MSMD test split after direct vision-audio fine-t
 The MSMD-trained model was fine-tuned and evaluated on the test split (7793 sheet music lines ) of the [PRAIG/GrandStaff multimodal dataset](https://huggingface.co/datasets/PRAIG/grandstaff-grandstaff-multimodal). These results indicate that cross-modal alignment learned through the MSMD-specific pretraining transfers to a different synthetic piano score-audio dataset.
 
 - **Unique sheet music lines:** 7,793
+  
 | Retrieval Direction | Rank@1 | Rank@25 | MRR | Median Rank |
 | :--- | :--- | :--- | :--- | :--- |
 | **Audio-to-Vision** | 0.880 | 0.990 | 0.924 | 1.0 |
