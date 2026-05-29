@@ -1,0 +1,13 @@
+# Datasets and Data folders
+data/
+
+# Model Checkpoints
+checkpoints/
+
+# Python Cache
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# OS generated files
+.DS_Store
