@@ -24,29 +24,49 @@ Edges represent temporal relationships between notes:
 
 ### Training 
 
-Training is performed in three stages to  align graph, audio, and vision representations.
+Training is performed in three steps to  align graph, audio, and vision representations.
 
-#### Stage 1: Audio-Graph Pretraining
+#### 1: Audio-Graph Pretraining
 
 <img width="576" height="300" alt="Sheet_Audio_GCL_imgs_page-0001" src="https://github.com/user-attachments/assets/55040af5-07f0-47d8-b3cf-9d5f362737c1" />  
 
 We use symmetric Momentum Contrast (MoCo) to align audio spectrogram embeddings with their corresponding graph embeddings produced by the Graph Attention Network (GAT).
 
-#### Stage 2: Vision-Graph Pretraining
+#### 2: Vision-Graph Pretraining
 
 <img width="380" height="300" alt="Sheet_Audio_GCL_imgs_page-0002" src="https://github.com/user-attachments/assets/ad807c54-e944-47db-8768-c0635405b3bf" />  
 
 With the GAT frozen, we train the vision encoder to match the corresponding GAT embeddings from sheet music images.
 
-#### Stage 3: Vision-Audio Fine-Tuning
+#### 3: Vision-Audio Fine-Tuning
 
 <img width="583" height="300" alt="Sheet_Audio_GCL_imgs_page-0003" src="https://github.com/user-attachments/assets/4408d955-60c2-4cdc-a126-8052d0f8ac5a" />  
 
 The pretrained vision and audio encoders are jointly fine-tuned using symmetric MoCo to directly align sheet music images with audio spectrograms.
 
-## Results 
+## Results & Evaluation
 
-Retrieval performance is evaluated on the MSMD test split using Rank@1, Rank@25, Mean Reciprocal Rank (MRR), and Median Rank (MR) after 1 epoch of direct Vision-Audio fine-tuning.
-MSMD one epoch
-* **Audio-to-Vision:** R@1: 0.670 | R@25: 0.925 | MRR: 0.756 | MR: 1.0
-* **Vision-to-Audio:** R@1: 0.733 | R@25: 0.895 | MRR: 0.779 | MR: 1.0
+Retrieval performance is evaluated using the following metrics:
+- **Rank@K (R@1, R@25):** Proportion of queries for which the correct match appears within the top \(K\) retrieved results.
+- **Mean Reciprocal Rank (MRR):** Mean reciprocal rank of the first correct match.
+- **Median Rank (MR):** Median rank position of the correct match across all queries.
+
+### 1. MSMD Dataset
+Evaluation was conducted on the MSMD test split after direct vision-audio fine-tuning.
+
+- **Unique sheet music lines (gallery):** 1,636  
+- **Audio-vision query pairs:** 24,540
+
+| Retrieval Direction | Rank@1 | Rank@25 | MRR | Median Rank |
+| :--- | :--- | :--- | :--- | :--- |
+| **Audio-to-Vision** | 0.670 | 0.925 | 0.756 | 1.0 |
+| **Vision-to-Audio** | 0.733 | 0.895 | 0.779 | 1.0 |
+
+### 2. GrandStaff Dataset
+The MSMD-trained model was fine-tuned and evaluated on the test split (7793 sheet music lines ) of the [PRAIG/GrandStaff multimodal dataset](https://huggingface.co/datasets/PRAIG/grandstaff-grandstaff-multimodal). These results indicate that cross-modal alignment learned through the MSMD-specific pretraining transfers to a different synthetic piano score-audio dataset.
+
+- **Unique sheet music lines:** 7,793
+| Retrieval Direction | Rank@1 | Rank@25 | MRR | Median Rank |
+| :--- | :--- | :--- | :--- | :--- |
+| **Audio-to-Vision** | 0.880 | 0.990 | 0.924 | 1.0 |
+| **Vision-to-Audio** | 0.889 | 0.990 | 0.929 | 1.0 |
