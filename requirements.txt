@@ -1,0 +1,14 @@
+torch
+torchvision
+torchaudio
+torch-geometric
+muscima
+numpy
+Pillow
+tqdm
+scikit-learn
+scikit-image
+datasets
+huggingface_hub
+matplotlib
+torchcodec
