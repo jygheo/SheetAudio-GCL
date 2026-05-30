@@ -7,7 +7,7 @@ This repository implements a cross-modal retrieval system mapping piano sheet mu
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/SheetAudio-GCL.git
+git clone https://github.com/jygheo/SheetAudio-GCL.git
 cd SheetAudio-GCL
 ```
 
@@ -27,7 +27,8 @@ bash setup.sh
 
 ### Model Usage
 
-To use the models, see quickstart.py
+To use the models, see [quickstart.py](https://github.com/jygheo/SheetAudio-GCL/blob/main/quickstart.py).
+To reproduce results, see [Reproducing Results](#reproducing-results).
 
 ## Methodology
 ### Graph Construction
@@ -95,7 +96,7 @@ python scripts/03_train_phase3.py
 python scripts/04_finetune.py
 ```
 
-### MSMD evaluation
+### MSMD evaluation (using models from [Hugging Face](https://huggingface.co/hyg444/SheetAudio-GCL))
 ```bash
 python scripts/05_evaluate_msmd.py
 ```
@@ -109,7 +110,7 @@ python scripts/06_eval_gs.py
 
 Retrieval performance is evaluated using the following metrics:
 
-- **Rank@K (R@1, R@25):** Proportion of queries for which the correct match appears within the top \(K\) retrieved results.
+- **Rank@K (R@1, R@25):** Proportion of queries for which the correct match appears within the top K retrieved results.
 - **Mean Reciprocal Rank (MRR):** Mean reciprocal rank of the first correct match.
 - **Median Rank (MR):** Median rank position of the correct match across all queries.
 
@@ -127,8 +128,7 @@ Evaluation was conducted on the MSMD test split after direct vision-audio fine-t
 
 ### 2. GrandStaff Dataset
 
-The MSMD-trained model was further fine-tuned and evaluated on the test split of the PRAIG/GrandStaff multimodal dataset toassesses transferability to a distinct synthetic piano score-audio corpus.
-
+The MSMD-trained model was further fine-tuned and evaluated on the test split of the PRAIG/GrandStaff multimodal dataset. These results indicate that cross-modal alignment learned through the MSMD-specific pretraining can transfer to a different synthetic piano score-audio dataset.
 
 - **Unique sheet music lines:** 7,793
 
