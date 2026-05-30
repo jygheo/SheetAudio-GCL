@@ -27,7 +27,7 @@ bash setup.sh
 
 ### Model Usage
 
-To use the models, see [quickstart.py](https://github.com/jygheo/SheetAudio-GCL/blob/main/quickstart.py).
+To use the models, see [quickstart.py](https://github.com/jygheo/SheetAudio-GCL/blob/main/quickstart.py).  
 To reproduce results, see [Reproducing Results](#reproducing-results).
 
 ## Methodology
