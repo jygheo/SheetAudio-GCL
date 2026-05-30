@@ -128,7 +128,7 @@ Evaluation was conducted on the MSMD test split after direct vision-audio fine-t
 
 ### 2. GrandStaff Dataset
 
-The MSMD-trained model was further fine-tuned and evaluated on the test split of the PRAIG/GrandStaff multimodal dataset. These results indicate that cross-modal alignment learned through the MSMD-specific pretraining can transfer to a different synthetic piano score-audio dataset.
+The MSMD-trained model was further fine-tuned and evaluated on the test split of the [GrandStaff multimodal](https://huggingface.co/datasets/PRAIG/grandstaff-grandstaff-multimodal) dataset. These results indicate that cross-modal alignment learned through the MSMD-specific pretraining can transfer to a different synthetic piano score-audio dataset.
 
 - **Unique sheet music lines:** 7,793
 
